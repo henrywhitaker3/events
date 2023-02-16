@@ -1,0 +1,12 @@
+kind: pipeline
+type: docker
+name: pr
+
+steps:
+  - name: unit test
+    image: golang:1.20
+    when:
+      event:
+        - pull_request
+    commands:
+      - go test ./...
